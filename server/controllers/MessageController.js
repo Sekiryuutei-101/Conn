@@ -1,6 +1,13 @@
 import { connect } from "http2";
 import getPrismaInstance from "../utils/PrismaClient.js";
 import {renameSync} from 'fs';
+import cloudinary from 'cloudinary';
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
 export const addMessage = async(req,res,next)=>{
     try{
@@ -71,6 +78,8 @@ export const getMessages = async (req,res,next) =>{
         next(error)
     }
 };
+
+
 
 export const addImageMessage  = async (req,res,next)=> {
     try{

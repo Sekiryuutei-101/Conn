@@ -12,7 +12,7 @@ function ChatContainer() {
 
   const [{messages, currentChatUser, userInfo}] = useStateProvider();
   return(
-    <div className="h-[80vh] w-full  relative flex-grow  custom-scrollbar overflow-y-auto ">
+    <div className="h-[80vh] w-full  relative flex-grow rounded-xl custom-scrollbar overflow-y-auto ">
       <div className="mx-10 my-6 relative bottom-0 z-40 left-0">
           
   

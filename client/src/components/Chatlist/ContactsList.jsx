@@ -53,7 +53,7 @@ function ContactsList() {
     </div>
     <div className="bg-search-input-container-background h-full flex-auto overflow-auto custom-scrollbar">
       <div className="flex py-3 items-center gap-3 h-14">
-        <div className="bg-panel-header-background flex items-center gap-5 px-3 py-1 rounded-lg flex-grow mx-4">
+        <div className=" flex items-center gap-5 px-3 py-1 rounded-lg flex-grow mx-4">
           <div>
             <BiSearchAlt2 className="text-panel-header-icon cursor-pointer text-l" />
           </div>
@@ -61,7 +61,7 @@ function ContactsList() {
         <input
          type="text"  
          placeholder="Search Contacts" 
-         className="bg-transparent text-sm focus:outline:none text-white w-full "
+         className="bg-transparent text-sm focus:outline-none text-white w-full "
          value={searchTerm}
          onChange={e=>setSearchTerm(e.target.value)}
         />

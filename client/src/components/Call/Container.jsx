@@ -85,7 +85,7 @@ function Container({ data }) {
   // If call is not accepted, show caller information
   if (!callAccepted) {
     return (
-      <div className="border-conversation-border border-1 w-full bg-conversation-panel-background flex flex-col h-[100vh] overflow-hidden items-center justify-center text-white">
+      <div className="border-conversation-border border-1 w-full bg-gradient-to-br from-slate-200 to-orange-300 flex flex-col h-[100vh] overflow-hidden items-center justify-center text-white">
         <div className="flex flex-col gap-3 items-center">
           <span className="text-5xl">{data.name}</span>
           <span className="text-lg">
@@ -107,7 +107,7 @@ function Container({ data }) {
 
   // When call is accepted, show video call container
   return (
-    <div className="border-conversation-border border-1 w-full bg-conversation-panel-background flex flex-col h-[100vh] overflow-hidden items-center justify-center text-white">
+    <div className="border-conversation-border border-1 w-full bg-gradient-to-br from-slate-200 to-orange-300 flex flex-col h-[100vh] overflow-hidden items-center justify-center text-white">
       <div id="video-call-container" style={{ width: '100%', height: '100%' }} />
       <div className="absolute bottom-5 h-16 w-16 bg-red-600 flex items-center justify-center rounded-full">
         <MdOutlineCallEnd onClick={endCall} className="text-3xl cursor-pointer" />

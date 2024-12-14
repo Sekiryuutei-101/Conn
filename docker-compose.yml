@@ -1,0 +1,37 @@
+
+services:
+  frontend:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:3001
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./server
+    volumes:
+      - ./server/prisma:/app/prisma
+
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=mongodb+srv://jitsaha567:lh0yZaGIUD2IwSPw@conn.c7f1d.mongodb.net/Conn?retryWrites=true&w=majority&appName=Conn
+      - PORT=3001
+      - NEXT_PUBLIC_ZEGO_APP_ID=912242580
+      - NEXT_PUBLIC_ZEGO_SERVER_ID=fcb095e162b2f8da3a44ec56cf8329f6
+
+  database:
+    image: mongo:latest  # Use your desired DB (this example uses MongoDB)
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db  # This ensures data persists even if the container is stopped
+
+volumes:
+  mongo-data:  # Correctly defined volume at the bottom
+    driver: local

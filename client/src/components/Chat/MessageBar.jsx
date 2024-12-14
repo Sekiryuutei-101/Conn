@@ -8,8 +8,20 @@ import { MdSend } from "react-icons/md";
 import axios from "axios";
 import { reducerCases } from "@/context/constants";
 import EmojiPicker from "emoji-picker-react";
-import PhotoPicker from "../common/PhotoPicker";
+// import PhotoPicker from "../common/PhotoPicker";
 import dynamic from 'next/dynamic';
+
+const PhotoPicker = ({ onChange }) => {
+  return (
+    <input
+      type="file"
+      id="photo-picker"
+      style={{ display: "none" }}
+      accept="image/*"
+      onChange={onChange}
+    />
+  );
+};
 
 const CaptureAudio = dynamic(() => import("../common/CaptureAudio"), { 
   ssr: false 
@@ -22,6 +34,11 @@ function MessageBar() {
   const emojiPickerRef = useRef(null);
   const [grabPhoto, setGrabPhoto] = useState(false);
   const [showAudioRecorder, setShowAudioRecorder] = useState(false);
+
+
+
+
+
   const photoPickerChange = async(e) => {
     try {
       const file = e.target.files[0];
@@ -130,7 +147,7 @@ function MessageBar() {
     
      <>
       <div className="flex gap-6">
-        <BsEmojiSmile  className="text-panel-header-icon cursor-pointer text-xl"
+        <BsEmojiSmile  className="text-white cursor-pointer text-xl"
         title="Emoji"
         id="emoji-open"
         onClick={handleEmojiModal}
@@ -138,14 +155,14 @@ function MessageBar() {
         {showEmojiPicker && <div className="absolute bottom-24 left-16 z-40" ref={emojiPickerRef}>
             <EmojiPicker  onEmojiClick={handleEmojiClick} theme="dark"/>
           </div>}
-        <ImAttachment className="text-panel-header-icon cursor-pointer text-xl"
+        <ImAttachment className="text-white cursor-pointer text-xl"
           title="Attach File"
           onClick={()=> setGrabPhoto(true)}
         />
       </div>
       <div className="w-full rounded-lg h-10 flex items-center">
         <input 
-          type="text" placeholder="type a message" className="bg-input-background text-sm focus:outline-none text-white h-10 rounded-lg px-5 py-4 w-full" 
+          type="text" placeholder="type a message" className=" text-sm focus:outline-none text-black h-10 rounded-lg px-5 py-4 w-full" 
           onChange={e=>setMessage(e.target.value)}
           value={message}
         />
@@ -154,12 +171,12 @@ function MessageBar() {
         <button>
         {message.length? (
                   <MdSend  
-                  className="text-panel-header-icon cursor-pointer text-xl" 
+                  className="text-white cursor-pointer text-xl" 
                   title="Send Message" 
                   onClick={sendMessage}/>
         ) : (
           <FaMicrophone 
-          className="text-panel-header-icon cursor-pointer text-xl" 
+          className="text-white cursor-pointer text-xl" 
           title="record audio" 
           onClick={()=>setShowAudioRecorder(true)}
           />

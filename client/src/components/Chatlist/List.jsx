@@ -27,7 +27,7 @@ function List() {
   }, [userInfo]);
 
   return (
-    <div className="bg-search-input-container-background flex-auto overflow-auto max-h-full custom-scrollbar">
+    <div className="bg-search-input-container-background rounded-b-xl flex-auto overflow-auto max-h-full custom-scrollbar">
       {
         filteredContacts && filteredContacts.length > 0 ? 
           filteredContacts.map((contact) => (
